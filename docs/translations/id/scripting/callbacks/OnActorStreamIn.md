@@ -1,27 +1,27 @@
 ---
 title: OnActorStreamIn
-description: Callback ini akan terpanggil ketika sebuah aktor berada di jangkauan stream dari klien pemain.
+description: Callback ini akan terpanggil jika Aktor berada dalam jangkauan radius stream dari pemain lain
 tags: []
 ---
 
 :::warning
 
-Fungsi ini telah ditambahkan dalam SA-MP 0.3.7 dan tidak bekerja pada versi dibawahnya!
+Fungsi ini telah ditambahkan kedalam SA-MP 0.3.7 dan tidak akan bekerja pada versi dibawahnya!
 
 :::
 
 ## Deskripsi
 
-Callback ini akan terpanggil ketika sebuah aktor berada di jangkauan stream dari klien pemain.
+Callback ini akan terpanggil jika Aktor berada dalam jangkauan radius stream dari pemain lain.
 
-| Nama        | Deskripsi                                                       |
-| ----------- | --------------------------------------------------------------- |
-| actorid     | ID dari aktor yang berada dalam jangakauan stream klien pemain. |
-| forplayerid | ID dari pemain yang berada di jangkauan stream aktor.           |
+| Nama        | Deskripsi                                                            |
+| ----------- | -------------------------------------------------------------------- |
+| actorid     | ID dari aktor yang berada dalam stream radius jangkauan pemain lain. |
+| forplayerid | ID dari pemain lain yang berada dalam radius jangkauan si aktor.     |
 
 ## Returns
 
-Selalu terpanggil pertama di filterscripts.
+Callback ini akan selalu dipanggi duluan dalam filterscripts.
 
 ## Contoh
 
@@ -29,7 +29,7 @@ Selalu terpanggil pertama di filterscripts.
 public OnActorStreamIn(actorid, forplayerid)
 {
     new sring[40];
-    format(string, sizeof(string), "Actor %d berada disekitar anda.", actorid);
+    format(string, sizeof(string), "Aktor %d ada dalam jangkauan anda.", actorid);
     SendClientMessage(forplayerid, 0xFFFFFFFF, string);
     return 1;
 }
@@ -39,7 +39,7 @@ public OnActorStreamIn(actorid, forplayerid)
 
 :::tip
 
-Callback ini akan terpanggil juga oleh NPC.
+Callback ini juga bisa terpanggil kepada NPC.
 
 :::
 
